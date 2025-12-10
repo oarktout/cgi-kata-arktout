@@ -40,5 +40,31 @@ class GildedRoseTest {
         assertEquals(0, app.getItems()[0].quality);
     }
 
+    @Test
+    void testNormalItemDegradation() {
+        Item[] items = new Item[] { new Item("Normal Item", 5, 10) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(9, app.getItems()[0].quality);
+        assertEquals(4, app.getItems()[0].sellIn);
+    }
+
+    @Test
+    void testAgedBrieIncreasesQuality() {
+        Item[] items = new Item[] { new Item("Aged Brie", 5, 10) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(11, app.getItems()[0].quality);
+    }
+
+    @Test
+    void testSulfurasNeverChanges() {
+        Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 5, 80) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(80, app.getItems()[0].quality);
+        assertEquals(5, app.getItems()[0].sellIn);
+    }
+
 
 }
