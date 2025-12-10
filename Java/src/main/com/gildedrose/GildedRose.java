@@ -1,7 +1,5 @@
 package com.gildedrose;
 
-import  com.gildedrose.Item;
-
 public class GildedRose {
     private Item[] items;
 
